@@ -38,7 +38,7 @@ namespace cafmaker
       LOG.VERBOSE() << "Input file has Pandora Outerface branches? " << inputHasOuterfaceBranches << "\n";
       // For time, make it a data member of the filler...
       m_inputHasTime = HasT0();
-      LOG.VERBOSE() << "Input file has reconstructed t0? " << inputHasTime << "\n";
+      LOG.VERBOSE() << "Input file has reconstructed t0? " << m_inputHasTime << "\n";
 
       // Set branch addresses
       m_LArRecoNDTree->SetBranchAddress("event", &m_eventId);
@@ -70,7 +70,7 @@ namespace cafmaker
       m_LArRecoNDTree->SetBranchAddress("nuVtxZ", &m_nuVtxZVect);
       m_LArRecoNDTree->SetBranchAddress("isRecoPrimary", &m_isRecoPrimaryVect);
       m_LArRecoNDTree->SetBranchAddress("recoPDG", &m_recoPDGVect);
-      if (m_inputHasTime)
+      if (m_inputHasTime){
         m_LArRecoNDTree->SetBranchAddress("t0", &m_particleT0);
       }
       if (inputHasOuterfaceBranches)
