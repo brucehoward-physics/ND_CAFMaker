@@ -322,7 +322,7 @@ namespace cafmaker
      
      shower.start = start;
      shower.direction = dir;
-     shower.time = m_inputHasT0 ? (*m_particleT0)[i]*m_nsPerTickT0 : -999.; // Fill time if it's available
+     shower.time = m_inputHasTime ? (*m_particleT0)[i]*m_nsPerTickT0 : -999.; // Fill time if it's available
      shower.Evis = (*m_shwrEnergy)[i]/1000.; // [GeV]
      shower.qual = (*m_trackScoreVect)[i]; // saving the trackScore value as additional reco info. This provides a sort of degree of "shower-likeness" for this SRShower
      shower.len_cm = shwrLength;
@@ -456,7 +456,7 @@ namespace cafmaker
 
       shower.start = start;
       shower.direction = dir;
-      shower.time = m_inputHasT0 ? (*m_particleT0)[iCluster]*m_nsPerTickT0 : -999.; // Fill time if it's available
+      shower.time = m_inputHasTime ? (*m_particleT0)[iCluster]*m_nsPerTickT0 : -999.; // Fill time if it's available
       shower.Evis = energy;
       shower.initial_dEdx = (m_shwrdEdx != nullptr) ? (*m_shwrdEdx)[iCluster] : -999.;
       shower.conversionGap = (m_nuVtxXVect != nullptr) ?  sqrt(std::pow((start.X() - vtxX),2) + std::pow((start.Y() - vtxY),2) + std::pow((start.Z() - vtxZ),2)) : -999;
@@ -485,7 +485,7 @@ namespace cafmaker
       track.end = end;
       track.dir = dir;
       track.enddir = dir;
-      track.time = m_inputHasT0 ? (*m_particleT0)[iCluster]*m_nsPerTickT0 : -999.; // Fill time if it's available
+      track.time = m_inputHasTime ? (*m_particleT0)[iCluster]*m_nsPerTickT0 : -999.; // Fill time if it's available
       track.Evis = energy;
       track.E = energy;
       track.qual = n3DHits * 1.0;
@@ -686,7 +686,7 @@ namespace cafmaker
           track.qual = (*m_trackScoreVect)[i];// saving the trackScore value as additional reco info. This provides a sort of degree of "track-likeness" for this SRTrack
           track.start = recoParticle.start;
           track.end = recoParticle.end;
-          track.time = m_inputHasT0 ? (*m_particleT0)[i]*m_nsPerTickT0 : -999.; // Fill time if it's available
+          track.time = m_inputHasTime ? (*m_particleT0)[i]*m_nsPerTickT0 : -999.; // Fill time if it's available
           track.len_cm = (*m_trkfitLength)[i];
           track.len_gcm2 = track.len_cm * m_LArDensity;
           track.truth = truePartIDVect; 
